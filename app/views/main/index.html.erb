@@ -1,0 +1,23 @@
+<div class="container">
+  
+<h1>Music Search</h1>
+<p>Search for your favorite iTunes songs and create a playlist.</p>
+
+<%= form_tag(root_path, method: :GET) do %>
+  <%= label_tag(:searchterm, 'Search') %>
+  <%= text_field_tag(:searchterm) %>
+
+  <%= submit_tag('Search') %>
+<% end %>
+</div>
+
+<% @music_data.each do |music| %>
+  <div class="container">
+  <h3>  <%= music['artistName'] %></h3>
+  <%= image_tag(music['artworkUrl100']) %> 
+  <br>
+  <br>
+  <audio src="<%= music['previewUrl'] %>" controls></audio>
+</div>
+<% end %>
+
